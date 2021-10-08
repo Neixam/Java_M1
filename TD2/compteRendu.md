@@ -132,6 +132,16 @@ static public Map<String, Long> numberOfMoviesByActor(List<Movie> movies) {
         .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 }
 ```
-10)
+10) On doit retourner un _Optional_ car il permet de renvoyer une valeur équivalente à null
 ```java
+static public Optional<ActorMovieCount> actorInMostMovies(Map<String, Long> movie_number) {
+    return movie_number.entrySet().stream()
+        .map(v -> new ActorMovieCount(v.getKey(), v.getValue()))
+        .max(Comparator.comparingLong(ActorMovieCount::movieCount));
+}
 ```
+##Conclusion
+Durant ce tp j'ai pu d'avantage travailler sur mon apprentissage des _Stream_ et de la gestion des 
+exceptions. Je sais maintenant comment fonctionne les exceptions en java et comment faire pour bien les déployer.
+J'ai eu du mal sur certaine de ces parties et ce tp m'a montré comment fonctionne chaque façon de gestion d'exception.
+Pour conclure, j'ai aussi vu comment faire pour utiliser les fichiers et les lire via un chemin et un _Path_.
