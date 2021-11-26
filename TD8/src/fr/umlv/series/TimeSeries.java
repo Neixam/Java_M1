@@ -72,6 +72,14 @@ public class TimeSeries<E> {
                     .distinct()
                     .toArray());
         }
+
+        public Index and(Index indexOth) {
+            if (!dis.equals(indexOth.dis)) {
+                throw new IllegalArgumentException("It's not the same TimeSeries");
+            }
+            HashSet<Integer> indexSet = Arrays.stream(indexOth.index).boxed().collect(Collectors.toCollection(HashSet<Integer>::new));
+            return new Index(Arrays.stream(index).filter(indexSet::contains).toArray());
+        }
     }
 
     public void add(long timestamp, E element) {
