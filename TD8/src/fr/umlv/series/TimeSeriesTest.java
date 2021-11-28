@@ -563,8 +563,8 @@ public class TimeSeriesTest {
     assertThrows(NullPointerException.class, () -> index.and(null));
   }
 
-/*
 
+/*
   @Test @Tag("Q10")
   public void indexOrCovariant() {
     TimeSeries<String> timeSerie = new TimeSeries<String>();
