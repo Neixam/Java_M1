@@ -77,7 +77,8 @@ public class TimeSeries<E> {
             if (!dis.equals(indexOth.dis)) {
                 throw new IllegalArgumentException("It's not the same TimeSeries");
             }
-            HashSet<Integer> indexSet = Arrays.stream(indexOth.index).boxed().collect(Collectors.toCollection(HashSet<Integer>::new));
+            HashSet<Integer> indexSet = Arrays.stream(indexOth.index).boxed()
+                    .collect(Collectors.toCollection(HashSet<Integer>::new));
             return new Index(Arrays.stream(index).filter(indexSet::contains).toArray());
         }
     }
